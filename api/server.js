@@ -7,8 +7,13 @@ const app = express();
 
 
 app.get('/',(req, res)=>{
-   res.send(`ok its working arwin`)
+   res.send(`ok its working`)
 })
+
+app.get('/api/users',(req, res)=>{
+    res.send(`ok its working`)
+ })
+ 
 
 app.listen(port,()=>{
     console.log(`Server Started on ${port}`)
