@@ -1,5 +1,5 @@
 
-export default function login(){
+export default function loginComp(){
 
 
     return(
