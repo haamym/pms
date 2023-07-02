@@ -2,7 +2,11 @@ const pool = require('./../db')
 const bcrypt = require('bcrypt');
 const jwtGenerator = require('../utilities/jwtAuth');
 
+
+
 exports.register = async (req, res)=>{
+
+
     try {
         const { name, email, password} = req.body;
 
@@ -17,11 +21,9 @@ exports.register = async (req, res)=>{
 
         const newUser = await pool.query('INSERT INTO users(user_name,user_email,user_password) VALUES ($1,$2,$3) RETURNING *',[name,email,bcryptPassword])
         if(newUser.rows.length > 0){
-            res.status(201).send('Registered Successfully')
+            const token = jwtGenerator(newUser.rows[0].user_id)
+            res.status(201).json({message:'Registered Successfully',token:token})
         }
-
-        const token = jwtGenerator(newUser.rows[0].user_id)
-        res.json({token});
       
 
     } catch (error) {
@@ -41,7 +43,7 @@ exports.register = async (req, res)=>{
         !isValidPassword && res.status(401).json('Email or password is incorrect');
 
         const token =  await jwtGenerator(user.rows[0].user_id)
-        res.json({token})
+        res.json({message:'Successful',token: token})
         
     } catch (error) {
         console.error(error)
