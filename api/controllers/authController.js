@@ -4,6 +4,7 @@ const jwtGenerator = require('../utilities/jwtAuth');
 
 
 
+
 exports.register = async (req, res)=>{
 
 
@@ -47,5 +48,14 @@ exports.register = async (req, res)=>{
         
     } catch (error) {
         console.error(error)
+    }
+ }
+
+ exports.verifyToken = async (req,res)=>{
+    try {
+        res.json('true')
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send('server error');
     }
  }
