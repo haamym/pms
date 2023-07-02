@@ -4,8 +4,9 @@ const port = process.env.PORT || 2000;
 const userRouter = require('./routes/userRoutes')
 const authRouter = require('./routes/authRoutes')
 
-
 const app = express();
+app.use(express.json())
+// app.use(cors)
 
 app.get('/',(req, res)=>{
    res.json(`ok its working`)
