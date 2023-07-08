@@ -20,7 +20,7 @@ exports.register = async (req, res)=>{
         const salt = await bcrypt.genSalt(saltRound);
         const  bcryptPassword = await bcrypt.hash(password,salt);
 
-        const newUser = await pool.query('INSERT INTO users(user_name,user_email,user_password) VALUES ($1,$2,$3) RETURNING *',[name,email,bcryptPassword])
+        const newUser = await pool.query('INSERT INTO users(user_name,user_email,user_password,role) VALUES ($1,$2,$3,$4) RETURNING *',[name,email,bcryptPassword,9870])
         if(newUser.rows.length > 0){
             const token = jwtGenerator(newUser.rows[0].user_id)
             res.status(201).json({message:'Registered Successfully',token:token})
