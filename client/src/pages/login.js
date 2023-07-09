@@ -1,10 +1,10 @@
-
+import LoginComp from "../components/loginComp"
 
 export default function login(){
 
     return(
         <>
-        <h1>this is the login page</h1>
+            <LoginComp/>
         </>
     )
 }

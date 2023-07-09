@@ -4,7 +4,7 @@ export default function loginComp(){
 
     return(
         <>
-        <h1>login page</h1>
+            <h1>login page</h1>
         </>
     )
 }
