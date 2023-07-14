@@ -1,17 +1,13 @@
 const pool = require('../db');
-// CREATE TABLE Advertisement(ad_id SERIAL PRIMARY KEY, user_id uuid, FOREIGN KEY(user_id) REFERENCES users(user_id), ad_title VARCHAR(255) NOT NULL, ad_content VARCHAR(255) NOT NULL, ad_date DATE NOT NULL);
-
-// router.route('/advertisements').
-// get(authrization,advertisementController.advertisements).
-// post(authrization,advertisementController.addAdvertisement);
-
-// router.route('/advertisements/:id').
-// get(authrization,advertisementController.advertisement).
-// post(authrization,advertisementController.updateAdvertisement).
-// delete(authrization,advertisementController.deleteAdvertisement);
 
 exports.advertisements = async (req, res) => {
     try {
+        let advertisements = await pool.query("SELECT * FROM Advertisement");
+        if (advertisements.rows.length !== 0) {
+            res.json({ message: 'success', advertisements: advertisements.rows });
+        }else{
+            res.json({ message: 'No advertisements found'});
+        }
         
     } catch (error) {
         console.log(error.message)
@@ -21,6 +17,12 @@ exports.advertisements = async (req, res) => {
 
 exports.addAdvertisement = async (req, res) => {
     try {
+        let {user_id, ad_title, ad_content, ad_date} = req.body;
+        let newAdvertisement = await pool.query("INSERT INTO Advertisement(user_id, ad_title, ad_content, ad_date) VALUES($1, $2, $3, $4) RETURNING *", [user_id, ad_title, ad_content, ad_date]);
+        if(newAdvertisement.rows.length > 0){
+            res.json({message: 'success',advertisement:newAdvertisement.rows[0]})
+        }
+
         
     } catch (error) {
         console.log(error.message)
@@ -30,6 +32,11 @@ exports.addAdvertisement = async (req, res) => {
 
 exports.advertisement = async (req, res) => {
     try {
+        let {id} = req.params;
+        let advertisement = await pool.query("SELECT * FROM Advertisement WHERE ad_id = $1", [id]);
+        if(advertisement.rows.length > 0){
+            res.json({message: 'success',advertisement:advertisement.rows[0]})
+        }
         
     } catch (error) {
         console.log(error.message)
@@ -39,6 +46,13 @@ exports.advertisement = async (req, res) => {
 
 exports.updateAdvertisement = async (req, res) => {
     try {
+        let {user_id, ad_title, ad_content, ad_date} = req.body;
+        let {id} = req.params;
+        let updatedAdvertisement = await pool.query("UPDATE Advertisement SET user_id = $1, ad_title = $2, ad_content = $3, ad_date = $4 WHERE ad_id = $5 RETURNING *", [user_id, ad_title, ad_content, ad_date, id]);
+        if(updatedAdvertisement.rows.length > 0){
+            res.json({message: 'success',advertisement:updatedAdvertisement.rows[0]})
+        }
+        
         
     } catch (error) {
         console.log(error.message)
@@ -48,6 +62,10 @@ exports.updateAdvertisement = async (req, res) => {
 
 exports.deleteAdvertisement = async (req, res) => {
     try {
+        let {id} = req.params;
+        let deletedAdvertisement = await pool.query("DELETE FROM Advertisement WHERE ad_id = $1 RETURNING *", [id]);
+            res.json({message: 'success'})
+        
         
     } catch (error) {
         console.log(error.message)

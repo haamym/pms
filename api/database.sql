@@ -14,13 +14,6 @@ CREATE TABLE access_cards(access_id SERIAL PRIMARY KEY, user_id uuid, FOREIGN KE
 CREATE TABLE maintenance_requests(request_id SERIAL PRIMARY KEY, user_id uuid, FOREIGN KEY(user_id) REFERENCES users(user_id), facility_id INT, FOREIGN KEY(facility_id) REFERENCES facilities(facility_id), request_date DATE NOT NULL, description TEXT NOT NULL);
 CREATE TABLE parking_system(parking_id SERIAL PRIMARY KEY, user_id uuid, FOREIGN KEY(user_id) REFERENCES users(user_id), vehicle_number VARCHAR(255) NOT NULL, parking_slot VARCHAR(255) NOT NULL);
 CREATE TABLE reports(report_id SERIAL PRIMARY KEY, user_id uuid, FOREIGN KEY(user_id) REFERENCES users(user_id), report_date DATE NOT NULL, category VARCHAR(255) NOT NULL, description VARCHAR(255) NOT NULL);
+CREATE TABLE Advertisement(ad_id SERIAL PRIMARY KEY, user_id uuid, FOREIGN KEY(user_id) REFERENCES users(user_id), ad_title VARCHAR(255) NOT NULL, ad_content VARCHAR(255) NOT NULL, ad_date DATE NOT NULL);
 
--- Table: Advertisement		
--- Column Name	Data Type	Constraints
--- ad_id	Integer	Primary Key
--- admin_id	Integer	Foreign Key (Admins)
--- ad_title	Text	Not Null
--- ad_content	Text	Not Null
--- ad_date	Date	Not Null
 
-CREATE TABLE
