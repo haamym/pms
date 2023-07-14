@@ -41,6 +41,7 @@ exports.property = async (req, res) =>{
     }
 }
 
+
 exports.updateProperty = async (req, res) =>{
     try {
         const {property_name,description,location} = req.body;
