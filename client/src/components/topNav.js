@@ -13,7 +13,7 @@ export default function topNav(){
                 <h1 className="font-bold">PROPTYHUB</h1>
             </div>
             <div className='w-2/6'>
-                <input className='border border-[#888484] focus:outline-none w-[100%] px-3 py-2 rounded-lg' type='search' placeholder='Search'/>
+                <input className='border border-[#b6b3b3] focus:outline-none w-[100%] px-3 py-2 rounded-lg' type='search' placeholder='Search'/>
             </div>
             <div className='flex items-center'>
                 <div className='flex flex-col mr-4 '>
