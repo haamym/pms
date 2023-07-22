@@ -1,4 +1,3 @@
-import  SiteLogo from "../assets/img/logo.png"
 import "../pages/dashboard.css";
 
 
@@ -17,16 +16,13 @@ Setting
 */
 
 
-export default function dashHeader() {
+export default function sideNav () {
   const handleMenuClick = () => {
     console.log("clicked");
   };
 
   return (
-    <header className=" h-screen px-2 shadow w-1/6">
-      <div className="flex flex-row justify-center pb-5 border-b-[1px] border-[#aeabab34]"> 
-        <img className="h-[5rem] w-[5rem] " src={SiteLogo} alt="proptyhub"></img>
-      </div>
+    <header className=" h-[100%] px-2 shadow w-1/6">
       <nav className="pt-5 ">
         <ul>
           <li>
@@ -68,6 +64,7 @@ export default function dashHeader() {
             </div>
             <div>{/* <a href="/dashboard">Dashboard</a> */}</div>
           </li>
+          
         </ul>
       </nav>
     </header>
