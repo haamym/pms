@@ -1,11 +1,11 @@
-
+import DashHeader from "../components/dashHeader"
 
 export default function dashboard(){
 
 
     return (
-        <>
-        <h1>this is the dashboard page</h1>
-        </>
+        <section className="flex">
+            <DashHeader/>
+        </section>
     )
 }

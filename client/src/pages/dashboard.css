@@ -1,0 +1,8 @@
+
+.icons{
+    fill: #888484;
+}
+
+.hoverable:hover .icons{
+    fill: #fff;
+}

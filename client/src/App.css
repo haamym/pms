@@ -1,0 +1,7 @@
+.icons {
+    fill: black;
+    transition: fill 0.2s ease-in-out;
+  }
+  .icons:hover {
+    fill: green;
+  }
