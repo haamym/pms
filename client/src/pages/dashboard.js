@@ -12,7 +12,7 @@ export default function dashboard(){
             </header>
             <div className="flex  lg:h-[calc(100vh-80px)]">
                 <SideNav/>
-                <div className="w-screen px-4 py-2">
+                <div className="w-screen px-4 py-2 relative">
                     <Facility/>
 
                 </div>
