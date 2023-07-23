@@ -1,19 +1,6 @@
 import "../pages/dashboard.css";
 import {useEffect} from 'react'
 
-  /*
-header Items
-Profile
-Dashboard
-Management
-    Facilities
-    Maintanance Request
-    AccessCard Request
-    Parking Request
-Reports
-Advertisement
-Setting
-*/
 
 
 export default function sideNav () {

@@ -1,44 +1,49 @@
-import {Formik, useFormik} from 'formik'
+import { useFormik } from "formik"
 
-export default function Facilities(){
+export default function MaintananceReq(){
 
-const formik = useFormik({
-    initialValues:{
-        facility_name:'',
-        location:'',
-        description:''
-    }
-})
+    const formik = useFormik({
+        initialValues:{
+            facility:'',
+            request_date:'',
+            description:''
+        }
+    })
 
     return(
-       <form className='shadow-xl absolute w-2/3 m-auto left-0 right-0 px-4 py-4'>
+        <form className='shadow-xl absolute w-2/3 m-auto left-0 right-0 px-4 py-4'>
             <div className='h-14 flex items-center bg-[#f7f5f574] rounded-md justify-center mb-4'>
-                <p className='uppercase font-bold'>Create a new facility</p>
+                <p className='uppercase font-bold'>Create a new Maintanance Request</p>
             </div>
             <div className='flex flex-col'>
                 <label className='flex flex-col py-2'>
-                    Name
-                    <input
+                    Select Facility
+                    <select
                         className='border border-[#c9c3c3] px-2 py-2 rounded-md'
                         id='facility_name'
                         name='facility_name'
                         type='text'
                         placeholder='Facility Name'
                         onChange={formik.handleChange}
-                        value={formik.values.facility_name}
+                        value={formik.values.facility}
 
-                    />
+                    >
+                        
+                        <option value=''>Facility 1</option>
+                        <option value=''>Facility 2</option>
+                        <option value=''>Facility 3</option>
+                    </select>
                 </label>
                 <label className='flex flex-col py-2'>
-                    Location
+                    Request Date
                     <input
                         className='border border-[#c9c3c3] px-2 py-2 rounded-md'
-                        id='location'
-                        name='location'
+                        id='request_date'
+                        name='request_date'
                         type='text'
-                        placeholder='Location'
+                        placeholder='request_date'
                         onChange={formik.handleChange}
-                        value={formik.values.location}
+                        value={formik.values.request_date}
                     
                     />
                 </label>
@@ -62,4 +67,5 @@ const formik = useFormik({
             
        </form>
     )
+    
 }

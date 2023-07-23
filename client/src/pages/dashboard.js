@@ -1,6 +1,7 @@
 import SideNav from "../components/sideNav"
 import TopNav from '../components/topNav'
-import Facility from '../components/facilities'
+import Facility from '../components/Facilities'
+import MaintananceReq from "../components/MaintananceReq"
 
 export default function dashboard(){
 
@@ -13,8 +14,8 @@ export default function dashboard(){
             <div className="flex  lg:h-[calc(100vh-80px)]">
                 <SideNav/>
                 <div className="w-screen px-4 py-2 relative">
-                    <Facility/>
-
+                    {/* <Facility/> */}
+                    <MaintananceReq/>
                 </div>
             </div>
         </section>
