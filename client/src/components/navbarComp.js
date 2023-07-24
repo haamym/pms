@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
 // import { HamburgerIcon } from 'react-hamburger-icon';
 
@@ -149,3 +150,5 @@ export default function NavbarComp() {
         
     );
 }
+=======
+>>>>>>> 4adf87b90245b1d9d66e2e3e9400048d058d2090
