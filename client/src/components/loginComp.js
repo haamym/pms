@@ -1,13 +1,29 @@
-import siteLogo from "../assets/img/logo.svg"
+import siteLogo from "../assets/img/logo.png"
+import axios from 'axios'
+import { useState } from "react"
+const baseUrl = process.env.REACT_APP_BASE_URL;
+
+export default function LoginComp() {
+const {token, setToken} = useState();
 
 
-export default function loginComp() {
 
-    const onSubmit = (e) => {
+  const onSubmit = (e) => {
         e.preventDefault()
-        console.log("submit")
+        console.log(e.target.email.value)
+        console.log(e.target.password.value)
+        axios.post(`${baseUrl}auth/login`, 
+        {
+          'email':'arwin2@gmail.com',
+          'password':'haamym123'
+        }).then((res)=>{  
+          console.log(res)
+        }).catch((err)=>{
+          console.log(err)
+        })
     }
     
+
 
 
   return (
