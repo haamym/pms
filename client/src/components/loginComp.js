@@ -1,39 +1,42 @@
 import siteLogo from "../assets/img/logo.png"
 import axios from 'axios'
 import { useState } from "react"
+import Cookie from 'universal-cookie'
+import JwtDecoder from 'jwt-decode'
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
 export default function LoginComp() {
 const [apiError, setApiError] = useState('')
-const [token, setToken] = useState({
-    token: ''
-});
-const [user, setUser] = useState({
-    email: '',
-    password: '',
-})
+const [token, setToken] = useState();
+
 
 
 
 
   const onSubmit = (e) => {
         e.preventDefault()
-        setUser({
-            email: e.target.email.value,
-            password: e.target.password.value
-        })
-        login();
+        const { email, password } = e.target;
+        login({ email: email.value, password: password.value });
     }
 
 
-    const login = () => axios.post(`${baseUrl}auth/login`,user)
+    const login = (user) => axios.post(`${baseUrl}auth/login`,user)
         .then((res)=>{  
-          console.log(res)
+          console.log(res.data)
+          const {token} = res.data
+          const cookie = new Cookie()
+          cookie.set('token', token, {path: '/'})
+          const decodedToken = JwtDecoder(token)
+          setToken(decodedToken)
+          window.location.href = '/dashboard'
+
         }).catch((err)=>{
           const {response} = err
           console.log(err)
           setApiError(response.data)
         })
+
+        console.log(token)
 
   return (
     <>
