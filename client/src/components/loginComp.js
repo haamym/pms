@@ -4,27 +4,36 @@ import { useState } from "react"
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
 export default function LoginComp() {
-const {token, setToken} = useState();
+const [apiError, setApiError] = useState('')
+const [token, setToken] = useState({
+    token: ''
+});
+const [user, setUser] = useState({
+    email: '',
+    password: '',
+})
+
 
 
 
   const onSubmit = (e) => {
         e.preventDefault()
-        console.log(e.target.email.value)
-        console.log(e.target.password.value)
-        axios.post(`${baseUrl}auth/login`, 
-        {
-          'email':'arwin2@gmail.com',
-          'password':'haamym123'
-        }).then((res)=>{  
+        setUser({
+            email: e.target.email.value,
+            password: e.target.password.value
+        })
+        login();
+    }
+
+
+    const login = () => axios.post(`${baseUrl}auth/login`,user)
+        .then((res)=>{  
           console.log(res)
         }).catch((err)=>{
+          const {response} = err
           console.log(err)
+          setApiError(response.data)
         })
-    }
-    
-
-
 
   return (
     <>
@@ -41,6 +50,7 @@ const {token, setToken} = useState();
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          {apiError && <p className="text-center text-xs text-[red]">{apiError}</p>}
           <form className="space-y-6" onSubmit={onSubmit} method="POST">
             <div>
               <label
@@ -56,7 +66,7 @@ const {token, setToken} = useState();
                   type="email"
                   autoComplete="email"
                   required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full  rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -85,7 +95,7 @@ const {token, setToken} = useState();
                   type="password"
                   autoComplete="current-password"
                   required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
