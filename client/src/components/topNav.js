@@ -1,10 +1,20 @@
 import  SiteLogo from "../assets/img/logo.png"
 import userProfile from "../assets/img/UserProfile.png"
+import Cookie from 'universal-cookie'
 
 
 export default function topNav(){
 
+    const handleProfMenu = () => {
+        const profileContainer = document.getElementById('profile-container')
+        profileContainer.classList.toggle('hidden')
+    }
 
+    const handleLogout = () => {
+        const cookie = new Cookie()
+        cookie.remove('token-proptyhub')
+        window.location.href = '/'
+    }
 
     return(
         <>
@@ -20,7 +30,13 @@ export default function topNav(){
                     <p className='font-thin'>Welcome</p>
                     <p className='font-bold'>Haameem</p>
                 </div>    
-                <img className='max-h-14' src={userProfile}/>            
+                <img onClick={handleProfMenu} className='max-h-14 cursor-pointer' src={userProfile}/>  
+                <div id="profile-container" className="absolute top-[5rem] shadow-xl px-2 py-2 w-36 text-center z-10 hidden">
+                    <ul className="">
+                        <li onClick={''} className=" py-1 cursor-pointer text-[#888484] hover:text-[#fff] hover:bg-primary rounded">Profile</li>
+                        <li onClick={handleLogout} className="py-1 cursor-pointer text-[#888484] hover:text-[#fff] hover:bg-primary rounded">Logout</li>
+                    </ul>
+                </div>          
             </div>
         </>
     )

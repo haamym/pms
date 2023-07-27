@@ -1,10 +1,41 @@
-import siteLogo from "../assets/img/logo.svg"
+import siteLogo from "../assets/img/logo.png"
+import axios from 'axios'
+const baseUrl = process.env.REACT_APP_BASE_URL;
 
 export default function registerComp() {
 
+
+  let data = JSON.stringify({
+    "name": "haameem",
+    "email": "haam@gmail.com",
+    "password":"haamym123"
+  });
+
+  let config = {
+    method: 'post',
+    maxBodyLength: Infinity,
+    url: `http://localhost:2000/api/auth/register`,
+
+    data : data
+  };
+
+  const register = () => axios.request(config)
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+
     const onSubmit = (e) => {
         e.preventDefault()
-        console.log("submit")
+        const { name, email, password } = e.target.elements;
+
+        console.log(name.value, email.value, password.value)
+
+        register()
+
     }
 
   return (
@@ -14,7 +45,7 @@ export default function registerComp() {
         <img
           className="mx-auto h-14 w-auto"
           src={siteLogo}
-          alt="artusama"
+          alt="artusamak"
         />
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
           Create an account
@@ -95,7 +126,7 @@ export default function registerComp() {
         <p className="mt-10 text-center text-sm text-gray-500">
         Already have an account?{" "}
           <a
-            href="#"
+            href={window.location.origin + "/"}
             className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
           >
             Login here.

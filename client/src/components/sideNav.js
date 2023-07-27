@@ -317,6 +317,7 @@ export default function sideNav () {
             </div>
           </li>
         </ul>
+       
       </nav>
     </header>
   );

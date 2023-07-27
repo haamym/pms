@@ -4,10 +4,12 @@ import { useState } from "react"
 import Cookie from 'universal-cookie'
 import JwtDecoder from 'jwt-decode'
 const baseUrl = process.env.REACT_APP_BASE_URL;
+const {useNavigate} = require('react-router-dom')
 
 export default function LoginComp() {
 const [apiError, setApiError] = useState('')
 const [token, setToken] = useState();
+const navigate = useNavigate()
 
 
 
@@ -25,7 +27,7 @@ const [token, setToken] = useState();
           console.log(res.data)
           const {token} = res.data
           const cookie = new Cookie()
-          cookie.set('token', token, {path: '/'})
+          cookie.set('token-proptyhub', token, {path: '/'})
           const decodedToken = JwtDecoder(token)
           setToken(decodedToken)
           window.location.href = '/dashboard'
@@ -117,7 +119,7 @@ const [token, setToken] = useState();
           <p className="mt-10 text-center text-sm text-gray-500">
             Not a member?{" "}
             <a
-              href="#"
+              href={window.location.origin + "/register"}
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
               Register here.
