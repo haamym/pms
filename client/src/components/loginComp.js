@@ -38,7 +38,6 @@ const navigate = useNavigate()
           setApiError(response.data)
         })
 
-        console.log(token)
 
   return (
     <>
