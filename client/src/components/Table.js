@@ -1,34 +1,88 @@
+import {Card,Table,TableHead,TableRow,TableHeaderCell,TableBody,TableCell,Text,Title,Badge,} from "@tremor/react";
+import { StatusOnlineIcon } from "@heroicons/react/outline";
 
 
-export default function Table(){
+export default function TableComp(){
 
-
+    const data = [
+        {
+          name: "Viola Amherd",
+          Role: "Federal Councillor",
+          departement: "The Federal Department of Defence, Civil Protection and Sport (DDPS)",
+          status: "active",
+        },
+        {
+          name: "Simonetta Sommaruga",
+          Role: "Federal Councillor",
+          departement:
+            "The Federal Department of the Environment, Transport, Energy and Communications (DETEC)",
+          status: "active",
+        },
+        {
+          name: "Alain Berset",
+          Role: "Federal Councillor",
+          departement: "The Federal Department of Home Affairs (FDHA)",
+          status: "active",
+        },
+        {
+          name: "Ignazio Cassis",
+          Role: "Federal Councillor",
+          departement: "The Federal Department of Foreign Affairs (FDFA)",
+          status: "active",
+        },
+        {
+          name: "Ueli Maurer",
+          Role: "Federal Councillor",
+          departement: "The Federal Department of Finance (FDF)",
+          status: "active",
+        },
+        {
+          name: "Guy Parmelin",
+          Role: "Federal Councillor",
+          departement: "The Federal Department of Economic Affairs, Education and Research (EAER)",
+          status: "active",
+        },
+        {
+          name: "Karin Keller-Sutter",
+          Role: "Federal Councillor",
+          departement: "The Federal Department of Justice and Police (FDJP)",
+          status: "active",
+        },
+      ];
+      
 
 
     return(
-        <div className="w-4/5">
-            <table className="w-4/5">
-                <thead className="w-[5rem]">
-                    <tr className="flex justify-between">
-                        <th>Company</th>
-                        <th>Contact</th>
-                        <th>Country</th>
-                    </tr>
-                </thead>
-                
-                <tbody>
-                    <tr className="flex justify-between">
-                        <td>Alfreds Futterkiste</td>
-                        <td>Maria Anders</td>
-                        <td>Germany</td>
-                    </tr>
-                    <tr className="flex justify-between">
-                        <td>Centro comercial Moctezuma</td>
-                        <td>Francisco Chang</td>
-                        <td>Mexico</td>
-                    </tr>
-                </tbody>
-                </table>
-        </div>
+        <Card className="w-3/4">
+    <Title>List of Swiss Federal Councillours</Title>
+    <Table className="mt-5">
+      <TableHead>
+        <TableRow>
+          <TableHeaderCell>Name</TableHeaderCell>
+          <TableHeaderCell>Position</TableHeaderCell>
+          <TableHeaderCell>Department</TableHeaderCell>
+          <TableHeaderCell>Status</TableHeaderCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {data.map((item) => (
+          <TableRow key={item.name}>
+            <TableCell>{item.name}</TableCell>
+            <TableCell>
+              <Text>{item.Role}</Text>
+            </TableCell>
+            <TableCell>
+              <Text>{item.departement}</Text>
+            </TableCell>
+            <TableCell>
+              <Badge color="emerald" icon={StatusOnlineIcon}>
+                {item.status}
+              </Badge>
+            </TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  </Card>
     )
 }

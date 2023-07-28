@@ -5,7 +5,7 @@ import MaintananceReq from "../components/MaintananceReq";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Table from "../components/Table";
+import TableComp from "../components/Table";
 
 export default function Dashboard() {
   const history = useNavigate();
@@ -62,7 +62,7 @@ export default function Dashboard() {
         <div className="w-screen px-4 py-2 relative">
           {/* <Facility/> */}
           {/* <MaintananceReq /> */}
-            <Table />
+            <TableComp/>
         </div>
       </div>
     </section>
