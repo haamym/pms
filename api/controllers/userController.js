@@ -1,9 +1,15 @@
 const pool = require('../db');
 
-exports.getUsers = (req, res)=>{
+exports.getUsers = async (req, res)=>{
     try {
-        const users = pool.query("SELECT user_name,user_email,user_mobile,user_address,role FROM users");
-        res.json({message:'success',users:users.rows});
+        const users = await pool.query("SELECT user_name,user_email,user_mobile,user_address,role FROM users;");
+        if(users.rows.length !== 0){
+         res.json({message:'success',users:users.rows});
+        }
+         else{
+               res.json({message:'Something went wrong'})
+         }
+
     }
       catch (error) {
          console.log(error.message)
@@ -12,7 +18,6 @@ exports.getUsers = (req, res)=>{
  }
 
  exports.getUser = async (req, res)=>{
-   //  res.json({router:'get 1 user',userId: req.url})
     try {
         const {id} = req.params;
         const user = await pool.query("SELECT user_name,user_email,user_mobile,user_address,role FROM users WHERE user_id = $1",[id]);
