@@ -1,7 +1,14 @@
 const pool = require('../db');
 
 exports.getUsers = (req, res)=>{
-    res.json(`router: user Router, routUrl:${req.url}`)
+    try {
+        const users = pool.query("SELECT user_name,user_email,user_mobile,user_address,role FROM users");
+        res.json({message:'success',users:users.rows});
+    }
+      catch (error) {
+         console.log(error.message)
+         res.status(500).json('internal server error')
+      }
  }
 
  exports.getUser = async (req, res)=>{
