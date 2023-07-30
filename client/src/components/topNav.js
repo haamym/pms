@@ -16,6 +16,10 @@ export default function topNav(){
         window.location.href = '/'
     }
 
+    const handleProfileClick = (event) => {
+        console.log(event.target)
+    }
+
     return(
         <>
             <div className="flex items-center">
@@ -33,7 +37,7 @@ export default function topNav(){
                 <img onClick={handleProfMenu} className='max-h-14 cursor-pointer' src={userProfile}/>  
                 <div id="profile-container" className="absolute top-[5rem] shadow-xl px-2 py-2 w-36 text-center z-10 hidden">
                     <ul className="">
-                        <li onClick={''} className=" py-1 cursor-pointer text-[#888484] hover:text-[#fff] hover:bg-primary rounded">Profile</li>
+                        <li onClick={handleProfileClick} className=" py-1 cursor-pointer text-[#888484] hover:text-[#fff] hover:bg-primary rounded">Profile</li>
                         <li onClick={handleLogout} className="py-1 cursor-pointer text-[#888484] hover:text-[#fff] hover:bg-primary rounded">Logout</li>
                     </ul>
                 </div>          
