@@ -6,7 +6,6 @@ export default function TableComp() {
 
   const tableMoreInfo = (event) => {
     const moreInfo = document.querySelector('#moreAction');
-     
         moreInfo.classList.toggle('hidden')
         console.log(moreInfo);
       
