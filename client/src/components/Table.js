@@ -5,16 +5,19 @@ export default function TableComp() {
   const [popup, setPopup] = useState(false);
 
   const tableMoreInfo = (event) => {
-    const moreInfo = document.getElementById(
-      `${event.target.parentNode.parentNode.id}`
-    );
-    // moreInfo.classList.toggle("relative");
-    setPopup((prev) => !prev);
-
+    const moreInfo = document.querySelector('#moreAction');
+     
+        moreInfo.classList.toggle('hidden')
+        console.log(moreInfo);
+      
+    
     // moreInfo.classList.toggle("hidden");
     // moreInfo.classList.toggle("relative");
-    console.log(event.target.parentNode.parentNode.id);
-    console.log(moreInfo);
+    // setPopup((prev) => !prev);
+
+    // moreInfo.classList.toggle("relative");
+    // console.log(event.target.parentNode.parentNode.id);
+    // console.log(moreInfo);
   };
 
   const fakeFacilitiesData = [
@@ -123,10 +126,10 @@ export default function TableComp() {
                   </svg>
                 </button>
               </td>
-              <td className="relative hidden" id={facility.property_id}>
+              <td className="relative hidden" id={`moreAction`}>
                 <div
-                  id="moreAction"
-                  className="absolute shadow-2xl rounded flex flex-col w-20 max-w-[5rem] top-0 right-0  bg-[white]"
+                  id={`moreAction-${facility.property_id}`}
+                  className="absolute z-10 shadow-2xl rounded flex flex-col w-20 max-w-[5rem] top-0 right-0  bg-[white]"
                 >
                   <button className="hover:bg-primary hover:text-[white] hover:rounded py-2">
                     View
@@ -145,7 +148,7 @@ export default function TableComp() {
 
         <tfoot></tfoot>
       </table>
-      {popup && "popup"}
+      
     </>
   );
 }
