@@ -1,23 +1,14 @@
 import { StatusOnlineIcon } from "@heroicons/react/outline";
 import { useState } from "react";
+import Edit from "../assets/img/edit.png"
+import Delete from "../assets/img/delete.png"
+import View from "../assets/img/View.png"
 
 export default function TableComp() {
   const [popup, setPopup] = useState(false);
+  const [admin, setAdmin] = useState(true)
 
-  const tableMoreInfo = (event) => {
-    const moreInfo = document.querySelector('#moreAction');
-        moreInfo.classList.toggle('hidden')
-        console.log(moreInfo);
-      
-    
-    // moreInfo.classList.toggle("hidden");
-    // moreInfo.classList.toggle("relative");
-    // setPopup((prev) => !prev);
-
-    // moreInfo.classList.toggle("relative");
-    // console.log(event.target.parentNode.parentNode.id);
-    // console.log(moreInfo);
-  };
+  
 
   const fakeFacilitiesData = [
     {
@@ -104,42 +95,18 @@ export default function TableComp() {
               <td className="px-4 py-3 ">{facility.facility_name}</td>
               <td className="px-4 py-3">{facility.description}</td>
               <td className="px-4 py-3">{facility.location}</td>
-              <td className="px-4 py-3">
-                <button
-                  onClick={tableMoreInfo}
-                  className="flex bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded hover:bg-[#f5f2f287] focus:bg-[#f5f2f287]"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-6 h-6 pointer-events-none hover:bg-[#ded9d9]"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"
-                    />
-                  </svg>
+              <td className="px-4 py-3 flex">
+                <button className="mr-4 w-6 hover:shadow-2xl rounded">
+                  <img src={View} alt="view" />
                 </button>
+                {admin && <button className="mr-4 w-6 hover:shadow-md rounded">
+                  <img className="w-16 h-5" src={Edit} alt="edit" />
+                </button>}
+                {admin && <button className="mr-4 w-6 hover:shadow-2xl rounded">
+                  <img className="w-16 h-5" src={Delete} alt="delete" />
+                </button>}
               </td>
-              <td className="relative hidden" id={`moreAction`}>
-                <div
-                  id={`moreAction-${facility.property_id}`}
-                  className="absolute z-10 shadow-2xl rounded flex flex-col w-20 max-w-[5rem] top-0 right-0  bg-[white]"
-                >
-                  <button className="hover:bg-primary hover:text-[white] hover:rounded py-2">
-                    View
-                  </button>
-                  <button className="hover:bg-primary hover:text-[white] hover:rounded py-2">
-                    Edit
-                  </button>
-                  <button className="hover:bg-primary hover:text-[white] hover:rounded py-2">
-                    Delete
-                  </button>
-                </div>
+              <td className="" id={`moreAction`}>
               </td>
             </tr>
           ))}
@@ -147,7 +114,6 @@ export default function TableComp() {
 
         <tfoot></tfoot>
       </table>
-      
     </>
   );
 }
