@@ -60,6 +60,7 @@ export default function Dashboard() {
       <div className="flex  lg:h-[calc(100vh-80px)]">
         <SideNav />
         <div className="w-screen px-4 py-2">
+          <h1>dashboard</h1>
           {/* <Facility/> */}
           {/* <MaintananceReq /> */}
             <TableComp/>

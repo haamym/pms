@@ -18,15 +18,16 @@ function App() {
       <Routes>
         <Route path='/' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
-        <Route path='/dashboard' element={<Dashboard/>}/>
-        <Route path='/facilities' element={<Facilities/>}/>
-        <Route path='/maintainance' element={<Maintainance/>}/>
-        <Route path='/AccessCard' element={<AccessCard/>}/>
-        <Route path='/parking' element={<Parking/>}/>
-        <Route path='/reports' element={<Reports/>}/>
-        <Route path='/advertisement' element={<Advertisement/>}/>
-        <Route path='/setting' element={<Setting/>}/>
-'
+        <Route path='/dashboard'>
+          <Route index element={<Dashboard/>}/>
+          <Route path='facilities' element={<Facilities/>}/>
+          <Route path='/dashboard/maintainance' element={<Maintainance/>}/>
+          <Route path='/dashboard/AccessCard' element={<AccessCard/>}/>
+          <Route path='/dashboard/parking' element={<Parking/>}/>
+          <Route path='/dashboard/reports' element={<Reports/>}/>
+          <Route path='/dashboard/advertisement' element={<Advertisement/>}/>
+          <Route path='/dashboard/setting' element={<Setting/>}/>
+        </Route>
 
 
         {/* dont fgt tto create a page for 404 */}
