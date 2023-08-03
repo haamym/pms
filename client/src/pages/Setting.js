@@ -1,4 +1,4 @@
-import React from 'react'
+
 import React from 'react'
 import SideNav from "../components/sideNav";
 import TopNav from "../components/topNav";
@@ -18,7 +18,7 @@ export default function Setting() {
         </div>
         <div>
 
-        <Facility/>
+        {/* <Facility/> */}
         </div>
         
           

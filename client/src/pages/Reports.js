@@ -1,5 +1,4 @@
 import React from 'react'
-import React from 'react'
 import SideNav from "../components/sideNav";
 import TopNav from "../components/topNav";
 import Facility from "../components/Facilities";

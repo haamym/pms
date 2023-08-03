@@ -2,6 +2,7 @@ import React from 'react'
 import SideNav from "../components/sideNav";
 import TopNav from "../components/topNav";
 import Facility from "../components/Facilities";
+import View from '../components/View';
 
 
 export default function Facilities() {
@@ -18,7 +19,8 @@ export default function Facilities() {
           </div>
           <div>
 
-          <Facility/>
+          {/* <Facility/> */}
+          <View/>
           </div>
           
             
