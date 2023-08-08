@@ -3,8 +3,8 @@
 export default function View() {
   return (
     //make the section absolute and make the section dark and full screen of the website 
-    <section>
-        <div className="w-2/4">
+    
+        <div className="w-2/4 absolute bg-primary">
             <div className="flex justify-between">
                 <p>Name</p>
                 <p>Location</p>
@@ -15,6 +15,6 @@ export default function View() {
             description description description description description description description description 
             </p>
         </div>
-    </section>
+    
   )
 }
