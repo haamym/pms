@@ -18,7 +18,7 @@ export default function sideNav () {
       <nav className="pt-5 ">
         <ul>
           <li className='mb-2'>
-            <div
+            <button id="dashboard"
               onClick={handleMenuClick}
               className="flex align-middle hoverable text-[#888484] hover:text-[#fff] hover:bg-primary cursor-pointer  hover:rounded-xl px-3 py-4"
             >
@@ -51,13 +51,12 @@ export default function sideNav () {
                   </g>
                 </g>
               </svg>
-              <span id="dashboard" className="ml-2">Dashboard</span>
-            </div>
-            <div>{/* <a href="/dashboard">Dashboard</a> */}</div>
+              <span  className="ml-2">Dashboard</span>
+            </button>
           </li>
           <li>
             <p className="px-5 text-sm font-bold py-2">Management</p>
-            <div
+            <button id="Facilities"
               onClick={handleMenuClick}
               className="flex align-middle hoverable text-[#888484] hover:text-[#fff] hover:bg-primary cursor-pointer  hover:rounded-xl px-3 py-4"
             >
@@ -90,11 +89,12 @@ export default function sideNav () {
                   </g>
                 </g>
               </svg>
-              <span className="ml-2" id="Facilities">Facilities</span>
-            </div>
+              <span className="ml-2" >Facilities</span>
+            </button>
           </li>
           <li>
-            <div
+            <button
+              id="MaintananceRequest"
               onClick={handleMenuClick}
               className="flex align-middle hoverable text-[#888484] hover:text-[#fff] hover:bg-primary cursor-pointer  hover:rounded-xl px-3 py-4"
             >
@@ -127,11 +127,12 @@ export default function sideNav () {
                   </g>
                 </g>
               </svg>
-              <span className="ml-2" id="MaintananceRequest">Maintanance Request</span>
-            </div>
+              <span className="ml-2" >Maintanance Request</span>
+            </button>
           </li>
           <li>
-            <div
+            <button
+              id="AcessCard"
               onClick={handleMenuClick}
               className="flex align-middle hoverable text-[#888484] hover:text-[#fff] hover:bg-primary cursor-pointer  hover:rounded-xl px-3 py-4"
             >
@@ -164,11 +165,12 @@ export default function sideNav () {
                   </g>
                 </g>
               </svg>
-              <span className="ml-2" id="AcessCard">AccessCard Request</span>
-            </div>
+              <span className="ml-2" >AccessCard Request</span>
+            </button>
           </li>
           <li>
-            <div
+            <button
+              id="ParkingRequest"
               onClick={handleMenuClick}
               className="flex align-middle hoverable text-[#888484] hover:text-[#fff] hover:bg-primary cursor-pointer  hover:rounded-xl px-3 py-4"
             >
@@ -201,12 +203,13 @@ export default function sideNav () {
                   </g>
                 </g>
               </svg>
-              <span className="ml-2" id="ParkingRequest">Parking Request</span>
-            </div>
+              <span className="ml-2" >Parking Request</span>
+            </button>
           </li>
           <li>
             <p className="px-5 text-sm font-bold py-2">Tools</p>
-            <div
+            <button
+              id="Reports"
               onClick={handleMenuClick}
               className="flex align-middle hoverable text-[#888484] hover:text-[#fff] hover:bg-primary cursor-pointer  hover:rounded-xl px-3 py-4"
             >
@@ -239,11 +242,12 @@ export default function sideNav () {
                   </g>
                 </g>
               </svg>
-              <span className="ml-2" id="Reports">Reports</span>
-            </div>
+              <span className="ml-2" >Reports</span>
+            </button>
           </li>
           <li>
-            <div
+            <button
+              id="Advertisement"
               onClick={handleMenuClick}
               className="flex align-middle hoverable text-[#888484] hover:text-[#fff] hover:bg-primary cursor-pointer  hover:rounded-xl px-3 py-4"
             >
@@ -276,11 +280,12 @@ export default function sideNav () {
                   </g>
                 </g>
               </svg>
-              <span className="ml-2" id="Advertisement">Advertisement</span>
-            </div>
+              <span className="ml-2" >Advertisement</span>
+            </button>
           </li>
           <li className="mt-auto">
-            <div
+            <button
+              id="Setting"
               onClick={handleMenuClick}
               className="flex align-middle hoverable text-[#888484] hover:text-[#fff] hover:bg-primary cursor-pointer  hover:rounded-xl px-3 py-4"
             >
@@ -313,8 +318,8 @@ export default function sideNav () {
                   </g>
                 </g>
               </svg>
-              <span className="ml-2" id="Setting">Setting</span>
-            </div>
+              <span className="ml-2" >Setting</span>
+            </button>
           </li>
         </ul>
        
