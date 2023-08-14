@@ -20,7 +20,7 @@ export default function sideNav () {
           <li className='mb-2'>
             <button id="dashboard"
               onClick={handleMenuClick}
-              className="flex align-middle hoverable text-[#888484] hover:text-[#fff] hover:bg-primary cursor-pointer  hover:rounded-xl px-3 py-4"
+              className="flex align-middle hoverable hover:w-full text-[#888484] hover:text-[#fff] hover:bg-primary cursor-pointer  hover:rounded-xl px-3 py-4"
             >
               <svg className='h-5 w-8'
                 xmlns="http://www.w3.org/2000/svg"
@@ -51,14 +51,14 @@ export default function sideNav () {
                   </g>
                 </g>
               </svg>
-              <span  className="ml-2">Dashboard</span>
+              <span  className="ml-2 text-left">Dashboard</span>
             </button>
           </li>
           <li>
             <p className="px-5 text-sm font-bold py-2">Management</p>
             <button id="Facilities"
               onClick={handleMenuClick}
-              className="flex align-middle hoverable text-[#888484] hover:text-[#fff] hover:bg-primary cursor-pointer  hover:rounded-xl px-3 py-4"
+              className="flex align-middle hoverable hover:w-full text-[#888484] hover:text-[#fff] hover:bg-primary cursor-pointer  hover:rounded-xl px-3 py-4"
             >
               <svg className='h-5 w-8'
                 xmlns="http://www.w3.org/2000/svg"
@@ -89,14 +89,14 @@ export default function sideNav () {
                   </g>
                 </g>
               </svg>
-              <span className="ml-2" >Facilities</span>
+              <span className="ml-2 text-left" >Facilities</span>
             </button>
           </li>
           <li>
             <button
               id="MaintananceRequest"
               onClick={handleMenuClick}
-              className="flex align-middle hoverable text-[#888484] hover:text-[#fff] hover:bg-primary cursor-pointer  hover:rounded-xl px-3 py-4"
+              className="flex align-middle hoverable hover:w-full text-[#888484] hover:text-[#fff] hover:bg-primary cursor-pointer  hover:rounded-xl px-3 py-4"
             >
               <svg className='h-5 w-8'
                 xmlns="http://www.w3.org/2000/svg"
@@ -127,14 +127,14 @@ export default function sideNav () {
                   </g>
                 </g>
               </svg>
-              <span className="ml-2" >Maintanance Request</span>
+              <span className="ml-2 text-left" >Maintanance Request</span>
             </button>
           </li>
           <li>
             <button
               id="AcessCard"
               onClick={handleMenuClick}
-              className="flex align-middle hoverable text-[#888484] hover:text-[#fff] hover:bg-primary cursor-pointer  hover:rounded-xl px-3 py-4"
+              className="flex align-middle hoverable hover:w-full text-[#888484] hover:text-[#fff] hover:bg-primary cursor-pointer  hover:rounded-xl px-3 py-4"
             >
               <svg className='h-5 w-8'
                 xmlns="http://www.w3.org/2000/svg"
@@ -165,14 +165,14 @@ export default function sideNav () {
                   </g>
                 </g>
               </svg>
-              <span className="ml-2" >AccessCard Request</span>
+              <span className="ml-2 text-left" >AccessCard Request</span>
             </button>
           </li>
           <li>
             <button
               id="ParkingRequest"
               onClick={handleMenuClick}
-              className="flex align-middle hoverable text-[#888484] hover:text-[#fff] hover:bg-primary cursor-pointer  hover:rounded-xl px-3 py-4"
+              className="flex align-middle hoverable hover:w-full text-[#888484] hover:text-[#fff] hover:bg-primary cursor-pointer  hover:rounded-xl px-3 py-4"
             >
               <svg className='h-5 w-8'
                 xmlns="http://www.w3.org/2000/svg"
@@ -203,7 +203,7 @@ export default function sideNav () {
                   </g>
                 </g>
               </svg>
-              <span className="ml-2" >Parking Request</span>
+              <span className="ml-2 text-left" >Parking Request</span>
             </button>
           </li>
           <li>
@@ -211,7 +211,7 @@ export default function sideNav () {
             <button
               id="Reports"
               onClick={handleMenuClick}
-              className="flex align-middle hoverable text-[#888484] hover:text-[#fff] hover:bg-primary cursor-pointer  hover:rounded-xl px-3 py-4"
+              className="flex align-middle hoverable hover:w-full text-[#888484] hover:text-[#fff] hover:bg-primary cursor-pointer  hover:rounded-xl px-3 py-4"
             >
               <svg className='h-5 w-8'
                 xmlns="http://www.w3.org/2000/svg"
@@ -242,14 +242,14 @@ export default function sideNav () {
                   </g>
                 </g>
               </svg>
-              <span className="ml-2" >Reports</span>
+              <span className="ml-2 text-left" >Reports</span>
             </button>
           </li>
           <li>
             <button
               id="Advertisement"
               onClick={handleMenuClick}
-              className="flex align-middle hoverable text-[#888484] hover:text-[#fff] hover:bg-primary cursor-pointer  hover:rounded-xl px-3 py-4"
+              className="flex align-middle hoverable hover:w-full text-[#888484] hover:text-[#fff] hover:bg-primary cursor-pointer  hover:rounded-xl px-3 py-4"
             >
               <svg className='h-5 w-8'
                 xmlns="http://www.w3.org/2000/svg"
@@ -280,14 +280,14 @@ export default function sideNav () {
                   </g>
                 </g>
               </svg>
-              <span className="ml-2" >Advertisement</span>
+              <span className="ml-2 text-left" >Advertisement</span>
             </button>
           </li>
           <li className="mt-auto">
             <button
               id="Setting"
               onClick={handleMenuClick}
-              className="flex align-middle hoverable text-[#888484] hover:text-[#fff] hover:bg-primary cursor-pointer  hover:rounded-xl px-3 py-4"
+              className="flex align-middle hoverable hover:w-full text-[#888484] hover:text-[#fff] hover:bg-primary cursor-pointer  hover:rounded-xl px-3 py-4"
             >
               <svg className='h-5 w-8'
                 xmlns="http://www.w3.org/2000/svg"
@@ -318,7 +318,7 @@ export default function sideNav () {
                   </g>
                 </g>
               </svg>
-              <span className="ml-2" >Setting</span>
+              <span className="ml-2 text-left" >Setting</span>
             </button>
           </li>
         </ul>
