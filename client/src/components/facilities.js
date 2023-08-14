@@ -10,6 +10,10 @@ const formik = useFormik({
     }
 })
 
+const cancelFormHandler = () =>{
+
+}
+
     return(
        <form className='shadow-xl absolute w-2/3 m-auto left-0 right-0 px-4 py-4'>
             <div className='h-14 flex items-center bg-[#f7f5f574] rounded-md justify-center mb-4'>
@@ -56,7 +60,7 @@ const formik = useFormik({
                 </label>
             </div>
             <div className='flex justify-between'>
-                <button className='bg-[#f7f5f5] active:bg-[#ede9e9] hover:shadow-inner hover:shadow-[#e1e1e1] border border-[#c9c3c3] px-4 py-2 rounded-md'>Cancel</button>
+                <button onClick={cancelFormHandler} className='bg-[#f7f5f5] active:bg-[#ede9e9] hover:shadow-inner hover:shadow-[#e1e1e1] border border-[#c9c3c3] px-4 py-2 rounded-md'>Cancel</button>
                 <button className='bg-[#f7f5f5] active:bg-[#ede9e9] hover:shadow-inner hover:shadow-[#e1e1e1] border border-[#c9c3c3] px-4 py-2 rounded-md'>Save</button>
             </div>
             
