@@ -13,17 +13,29 @@ import Advertisement from './pages/Advertisement'
 import Setting from './pages/Setting'
 import {LoginContext } from './context/CreateContext';
 import { useState,useEffect } from 'react';
+import axios from 'axios';
+import JwtDecoder from 'jwt-decode'
+import Cookie from 'universal-cookie'
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
 function App() {
+  const cookie = new Cookie()
   const [token, setToken] = useState();
+  const [cookies, setCookie] = useState(JwtDecoder(cookie.get('token-proptyhub')))
   const [user, setUser] = useState()
-  console.log(token)
+  
+  console.log(cookies.user)
+
 
 useEffect(()=>{
+   cookies && axios.get(`${baseUrl}users/${cookies.user}`).then((res)=>{
+      console.log(res.data)
+  }).catch((err)=>{
+    console.log(err)
+  }
+  )
 
-
-},[token])
+},[cookies])
 
 
   return (
