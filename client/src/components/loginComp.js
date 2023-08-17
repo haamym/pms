@@ -1,14 +1,17 @@
+import { useState,useContext } from "react"
 import siteLogo from "../assets/img/logo.png"
 import axios from 'axios'
-import { useState } from "react"
 import Cookie from 'universal-cookie'
 import JwtDecoder from 'jwt-decode'
+import { LoginContext } from "../context/CreateContext"
+
 const baseUrl = process.env.REACT_APP_BASE_URL;
 const {useNavigate} = require('react-router-dom')
 
+
 export default function LoginComp() {
 const [apiError, setApiError] = useState('')
-const [token, setToken] = useState();
+const {token,setToken} = useContext(LoginContext)
 const navigate = useNavigate()
 
 
@@ -24,7 +27,7 @@ const navigate = useNavigate()
 
     const login = (user) => axios.post(`${baseUrl}auth/login`,user)
         .then((res)=>{  
-          console.log(res.data)
+          // console.log(res.data)
           const {token} = res.data
           const cookie = new Cookie()
           cookie.set('token-proptyhub', token, {path: '/'})
@@ -37,7 +40,7 @@ const navigate = useNavigate()
           console.log(err)
           setApiError(response.data)
         })
-
+        
 
   return (
     <>

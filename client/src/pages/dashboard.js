@@ -3,14 +3,17 @@ import TopNav from "../components/topNav";
 import Facility from "../components/Facilities";
 import MaintananceReq from "../components/MaintananceReq";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState,useContext } from "react";
 import axios from "axios";
 import TableComp from "../components/Table";
+import { LoginContext } from "../context/CreateContext";
 
 export default function Dashboard() {
   const history = useNavigate();
   const location = useLocation();
   const [isVerified, setIsVerified] = useState(false);
+  const {token} = useContext(LoginContext)
+
 
 
 
@@ -51,6 +54,7 @@ export default function Dashboard() {
     //     }
     // }, [isVerified])
 
+    token && console.log(token)
 
   return (
     <section className="flex flex-col">
