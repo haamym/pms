@@ -121,7 +121,7 @@ const navigate = useNavigate()
           <p className="mt-10 text-center text-sm text-gray-500">
             Not a member?{" "}
             <a
-              href={window.location.origin + "/register"}
+              onClick={()=>navigate('/register')}
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
               Register here.

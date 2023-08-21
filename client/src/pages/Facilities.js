@@ -16,11 +16,18 @@ export default function Facilities() {
   const [createForm, setCreateForm] = useState(false);
   const [facilitiesData, setFacilitiesData] = useState();
   const [propertyData, setPropertyData] = useState();
-  const { token } = useContext(LoginContext);
+  const { token,user } = useContext(LoginContext);
   const [updateForm, setUpdateForm] = useState(false);
   const [apiMessage, setApiMessage] = useState("");
   const [count, setCount] = useState(0);
   const [apiError, setApiError] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false)
+
+  useEffect(()=>{
+    if(user && user.role == 543){
+      setIsAdmin(true)
+    }
+  } ,[user])
 
   const getFacilities = async () => {
     try {
@@ -98,6 +105,7 @@ export default function Facilities() {
         "Content-Type": "application/json",
       },
       data: {
+        property_id: property_id,
         facility_name: facility_name,
         location: location,
         description: description,
@@ -149,7 +157,7 @@ export default function Facilities() {
       const response = await axios.request(config);
       console.log(response.data.message);
       setApiMessage(response.data.message);
-      getProperties();
+      getFacilities();
     } catch (error) {
       console.log(error);
       setApiError(error);
@@ -157,7 +165,30 @@ export default function Facilities() {
   
   }
 
-  const handleDelete = async (e) => {};
+  const handleDelete = async (e) => {
+    const id = e.target.parentNode.parentNode.parentNode.id
+
+  
+  let config = {
+    method: 'delete',
+    maxBodyLength: Infinity,
+    url: `${baseUrl}dashboard/facilities/${id}`,
+    headers: {
+      'token': token,
+      'Content-Type': 'application/json'
+    }};
+
+    const deleteProperty = () => axios.request(config)
+    .then((response) => {
+      setApiMessage(response.data.message)
+      getFacilities();
+    })
+    .catch((error) => {
+      console.log(error.response.data);
+    })
+
+    deleteProperty()
+  };
 
   const createNewHandler = () => {
     setCreateForm(true);
