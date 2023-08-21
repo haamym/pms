@@ -1,4 +1,4 @@
-import SideNav from "../components/sideNav";
+import SideNav from "../components/SideNav";
 import TopNav from "../components/topNav";
 import Facility from "../components/Facilities";
 import MaintananceReq from "../components/MaintananceReq";
@@ -12,11 +12,11 @@ export default function Dashboard() {
   const history = useNavigate();
   const location = useLocation();
   const [isVerified, setIsVerified] = useState(false);
-  const {token} = useContext(LoginContext)
+  const {user,token} = useContext(LoginContext)
 
 
 
-
+ 
   // yoooo i need to get the token from the cookie and set it to the header dont fgt that to broski  for verification
   let config = {
     method: "get",
@@ -44,20 +44,17 @@ export default function Dashboard() {
   };
     
   
-  useEffect(() => {
-    // onRouteChange();
-  }, [location.pathname]);
+  // useEffect(() => {
+  //   // onRouteChange();
+  // }, [location.pathname]);
 
-    // useEffect(() => {
-    //     if (isVerified) {
-    //         window.location.href = '/'
-    //     }
-    // }, [isVerified])
 
-    token && console.log(token)
+
+
+ 
 
   return (
-    <section className="flex flex-col">
+    user && <section className="flex flex-col">
       <header className="flex items-center justify-between px-2 py-2 shadow">
         <TopNav />
       </header>
@@ -67,7 +64,12 @@ export default function Dashboard() {
           <h1>dashboard</h1>
           {/* <Facility/> */}
           {/* <MaintananceReq /> */}
-            <TableComp/>
+
+          {
+            user.role == 543 ? <MaintananceReq /> : <TableComp/>
+      
+          }
+            
         </div>
       </div>
     </section>
