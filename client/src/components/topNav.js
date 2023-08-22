@@ -1,10 +1,20 @@
 import  SiteLogo from "../assets/img/logo.png"
 import userProfile from "../assets/img/UserProfile.png"
 import Cookie from 'universal-cookie'
+import { useState, useContext, useEffect } from "react";
+import { LoginContext } from "../context/CreateContext";
 
 
-export default function topNav(){
+export default function TopNav(){
+    const { token, user } = useContext(LoginContext);
+    const [profileName, setProfileName] = useState()
 
+    useEffect(() => {
+        if(user){
+            setProfileName(user.user_name)
+        }
+    }, [user])
+    
     const handleProfMenu = () => {
         const profileContainer = document.getElementById('profile-container')
         profileContainer.classList.toggle('hidden')
@@ -32,7 +42,7 @@ export default function topNav(){
             <div className='flex items-center'>
                 <div className='flex flex-col mr-4 '>
                     <p className='font-thin'>Welcome</p>
-                    <p className='font-bold'>Haameem</p>
+                    <p className='font-bold'>{profileName ? profileName : "Unknown"}</p>
                 </div>    
                 <img onClick={handleProfMenu} className='max-h-14 cursor-pointer' src={userProfile}/>  
                 <div id="profile-container" className="absolute top-[5rem] shadow-xl px-2 py-2 w-36 text-center z-10 hidden">

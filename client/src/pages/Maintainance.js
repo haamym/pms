@@ -164,7 +164,7 @@ export default function Maintainance() {
 
   const handleUpdate = (request) =>{
     formik.setValues({
-
+          request_id:request.request_id,
           property_id: request.property_id,
           facility_id: request.facility_id,
           request_date: request.request_date,
@@ -172,6 +172,46 @@ export default function Maintainance() {
     });
     setUpdateForm(true)
   }
+
+
+
+  const updateHandler = async (e) =>{
+    const { request_id,facility_id,property_id, facility_name, location,description } = formik.values;
+    
+    console.log(facility_id,property_id, facility_name, location,description);
+
+    let config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: `${baseUrl}dashboard/maintainance_requests/${facility_id}`,
+      headers: {
+        'token': token,
+        'Content-Type': 'application/json'
+      },
+      data : {"property_id":property_id,
+              "facility_name":facility_name,
+              "location":location,
+              "description":description}
+    };
+  
+    try {
+      const response = await axios.request(config);
+      console.log(response.data.message);
+      setApiMessage(response.data.message);
+      getMaintainance()
+    } catch (error) {
+      console.log(error);
+      setApiError(error);
+    }
+  
+  }
+
+
+
+
+
+
+
 const handleDelete =(e)=>{
   const id = e.target.parentNode.parentNode.parentNode.id
 
@@ -297,7 +337,7 @@ useEffect(() => {
                       Cancel
                     </button>
                     <button
-                      onClick={onSubmit}
+                      onClick={updateHandler}
                       className="bg-[#f7f5f5] active:bg-[#ede9e9] hover:shadow-inner hover:shadow-[#e1e1e1] border border-[#c9c3c3] px-4 py-2 rounded-md"
                     >
                       Save
