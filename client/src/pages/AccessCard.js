@@ -26,6 +26,7 @@ export default function AccessCard() {
   const [apiError, setApiError] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
   const [userID, setUserID] = useState();
+  const [allusers, setAllUsers] = useState()
 
 
   useEffect(() => {
@@ -47,6 +48,33 @@ export default function AccessCard() {
       expiration_date: "",
     },
   });
+
+  const getAllUsers = async () => {
+    try {
+      const config = {
+        headers: {
+          token: token,
+          "Content-Type": "application/json",
+        },
+      };
+
+      const response = await axios
+        .get(`${baseUrl}users`, config)
+        .then((response) => {
+          const { data } = response;
+          setAllUsers(data.users);
+          setApiMessage(response.data.message);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(()=>{
+    getAllUsers()
+  },[])
+
+  console.log(allusers)
 
   const handleUpdate = (card) =>{
 
@@ -234,6 +262,16 @@ export default function AccessCard() {
                         required
                       />
                     </label>
+                    <select
+                      className="border border-[#c9c3c3] px-2 py-2 rounded-md mb-3"
+                      id="user_id"
+                      name="user_id"
+                      onChange={formik.handleChange}
+                      value={formik.values.user_id}
+                      required
+                    >
+                     
+                    </select>
                     <label className="flex flex-col py-2">
                       Expiration Date
                       <input

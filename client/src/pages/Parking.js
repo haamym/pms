@@ -173,7 +173,7 @@ export default function Parking() {
       const response = await axios.request(config);
 
       setApiMessage(response.data.message);
-      getAccessCards()
+      getParkingData()
     } catch (error) {
       console.log(error);
       setApiError(error);

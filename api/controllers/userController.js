@@ -2,7 +2,7 @@ const pool = require('../db');
 
 exports.getUsers = async (req, res)=>{
     try {
-        const users = await pool.query("SELECT user_name,user_email,user_mobile,user_address,role FROM users;");
+        const users = await pool.query("SELECT user_name,user_id,user_email,user_mobile,user_address,role FROM users;");
         if(users.rows.length !== 0){
          res.json({message:'success',users:users.rows});
         }
