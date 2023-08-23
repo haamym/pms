@@ -44,6 +44,7 @@ export default function AccessCard() {
   const formik = useFormik({
     initialValues: {
       access_id: "",
+      user_id:"",
       card_number: "",
       expiration_date: "",
     },
@@ -74,11 +75,12 @@ export default function AccessCard() {
     getAllUsers()
   },[])
 
-  console.log(allusers)
+  // console.log(allusers)
 
   const handleUpdate = (card) =>{
 
     formik.setValues({
+      user_id:card.user_id,
       access_id: card.access_id,
       card_number: card.card_number,
       expiration_date: card.expiration_date,
@@ -145,14 +147,14 @@ export default function AccessCard() {
     }
   };
 
-  // console.log(formik.values);
+ 
 
   const onSubmit = async (e) => {
     e.preventDefault();
   
     if (token) {
       const decodedToken = JwtDecoder(token);
-      const { card_number,expiration_date } = formik.values;
+      const {user_id, card_number,expiration_date } = formik.values;
   
       let config = {
         method: "post",
@@ -163,7 +165,7 @@ export default function AccessCard() {
           "Content-Type": "application/json",
         },
         data: {
-          user_id: decodedToken.user,
+          user_id: user_id,
           card_number: card_number,
           expiration_date: expiration_date,
         },
@@ -270,7 +272,12 @@ export default function AccessCard() {
                       value={formik.values.user_id}
                       required
                     >
-                     
+                      <option value="">Select a user</option>
+                     {allusers && allusers.map((user) => (
+                        <option id={user.user_id} key={user.user_id} value={user.user_id || ''}>
+                          {user.user_name}
+                        </option>
+                      ))}
                     </select>
                     <label className="flex flex-col py-2">
                       Expiration Date
@@ -404,6 +411,7 @@ export default function AccessCard() {
                     )
                   )}
                   {accesscardsData && !isAdmin && userID && user && accesscardsData.map((card)  =>{
+                    console.log(card)
                       if(card.user_id == userID.user){
                         return (
                           <tr
