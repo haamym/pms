@@ -7,15 +7,71 @@ import { useEffect, useState,useContext } from "react";
 import axios from "axios";
 import TableComp from "../components/Table";
 import { LoginContext } from "../context/CreateContext";
+import { Card, Title, AreaChart, DonutChart, PieChart } from "@tremor/react";
+import FullCalendar from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid'
+
+const baseUrl = process.env.REACT_APP_BASE_URL;
 
 export default function Dashboard() {
   const history = useNavigate();
   const location = useLocation();
   const [isVerified, setIsVerified] = useState(false);
   const {user,token} = useContext(LoginContext)
+  const [allusers, setAllUsers] = useState()
+  const [apiMessage, setApiMessage] = useState("");
 
 
+  const getAllUsers = async () => {
+    try {
+      const config = {
+        headers: {
+          token: token,
+          "Content-Type": "application/json",
+        },
+      };
 
+      const response = await axios
+        .get(`${baseUrl}users`, config)
+        .then((response) => {
+          const { data } = response;
+          setAllUsers(data.users);
+          setApiMessage(response.data.message);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(()=>{
+    getAllUsers()
+  },[])
+
+  const chartdata = [
+    {
+      date: "Aug 1",
+      SemiAnalysis: 1,
+      "User": 1,
+    },
+    {
+      date: "Aug 2",
+      SemiAnalysis: 2,
+      "User": 2,
+    },
+    {
+      date: "Aug 3",
+      SemiAnalysis: 3,
+      "User": 3,
+    },
+   
+  ];
+  
+  const dataFormatter = (number) => {
+    return "$ " + Intl.NumberFormat("us").format(number).toString();
+  };
+
+ 
+  
  
   // yoooo i need to get the token from the cookie and set it to the header dont fgt that to broski  for verification
   let config = {
@@ -61,15 +117,30 @@ export default function Dashboard() {
       <div className="flex  lg:h-[calc(100vh-80px)]">
         <SideNav />
         <div className="w-screen px-4 py-2">
-          <h1>dashboard</h1>
-          {/* <Facility/> */}
-          {/* <MaintananceReq /> */}
 
           {
-            user.role == 543 ? <MaintananceReq /> : <TableComp/>
-      
+            user.role == 543 && <Card>
+            <Title>Users Gained</Title>
+            <AreaChart
+              className="h-72 mt-4"
+              data={chartdata}
+              index="date"
+              categories={[ "User"]}
+              colors={["indigo", "cyan"]}
+              valueFormatter={dataFormatter}
+              showYAxis={false}
+            />
+          </Card>
           }
-            
+
+          
+          {
+            user.role != 543 && <FullCalendar
+            plugins={[ dayGridPlugin ]}
+            initialView="dayGridMonth"
+          />
+          }
+
         </div>
       </div>
     </section>

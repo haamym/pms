@@ -33,12 +33,15 @@ function App() {
         .then((res) => {
           setUser(res.data.user);
         })
-        .catch((err) => {});
+        .catch((err) => {
+          console.log(err,'sss')
+        });
     } else {
       console.log(cookies, "no cookies");
     }
   }, []);
 
+  
   return (
     <BrowserRouter>
       <LoginContext.Provider value={{ token,setToken, user }}>
