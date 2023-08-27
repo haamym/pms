@@ -110,7 +110,7 @@ export default function Dashboard() {
  
 
   return (
-    user && <section className="flex flex-col">
+    user && <section className="flex flex-col relative">
       <header className="flex items-center justify-between px-2 py-2 shadow">
         <TopNav />
       </header>
